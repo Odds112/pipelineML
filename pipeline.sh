@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Step 0: Установка зависимостей
-echo "Установка зависимостей..."
-pip install -r requirements.txt
-if [ $? -ne 0 ]; then
-    echo "Ошибка при установке зависимостей."
-    exit 1
-fi
 
 # Step 1: Генерация данных
 echo "Генерация данных..."
@@ -41,7 +34,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Извлечение метрики MSE из вывода
-mse=$(echo "$output" | grep "Среднеквадратичная ошибка (MSE)" | awk '{print $6}')
+mse=$(echo "$output" | grep "Среднеквадратичная ошибка (MSE)" | awk '{print $7}')
 if [ -z "$mse" ]; then
     echo "Ошибка: не удалось извлечь метрику."
     exit 1
